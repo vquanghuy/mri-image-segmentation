@@ -1,0 +1,6 @@
+# Jupyter temporary files
+.ipynb_checkpoints
+__pycache__
+
+# External data
+Task01_BrainTumour
