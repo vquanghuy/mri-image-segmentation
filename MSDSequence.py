@@ -27,12 +27,16 @@ class MSDSequence(Sequence):
         batch_y = []
         
         for item in batch_list:
-            X, y = self.__load_data( \
-                os.path.join(self.data_path, item['image']), \
-                os.path.join(self.data_path, item['label']), \
-            )
+            image_path = os.path.join(self.data_path, item['image'])
+            label_path = os.path.join(self.data_path, item['label'])
             
-            batch_x.append(X)
-            batch_y.append(y)
+            if os.path.exists(image_path) and os.path.exists(label_path):
+                X, y = self.__load_data( \
+                    os.path.join(self.data_path, item['image']), \
+                    os.path.join(self.data_path, item['label']), \
+                )
+
+                batch_x.append(X)
+                batch_y.append(y)
 
         return np.array(batch_x), np.array(batch_y)
